@@ -1,4 +1,6 @@
 const Pokemon = ({ details }) => {
+  let types = details.types.map((typeI) => typeI.type.name).join(", ");
+
   return (
     <>
       <div className="pokemon-card-container">
@@ -22,9 +24,7 @@ const Pokemon = ({ details }) => {
             <strong>Type/s: </strong>
           </p>
           <div className="types-seperator">
-            {details.types.map((typeI, i) => {
-              return <p key={i}>{typeI.type.name}</p>;
-            })}
+            <p>{types}</p>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import Pokemon from "./Pokemon";
 
 const PokemonApplication = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [selcetedPokemonId, setSelectedPokemonId] = useState("");
+  const [selcetedPokemon, setSelectedPokemon] = useState("");
   const [pokemonDetails, setPokemonDetails] = useState(null);
 
   useEffect(() => {
@@ -18,9 +18,7 @@ const PokemonApplication = () => {
   }, []);
 
   const getDetails = async () => {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${selcetedPokemonId}`
-    );
+    const response = await fetch(selcetedPokemon);
     const json = await response.json();
     setPokemonDetails(json);
   };
@@ -28,11 +26,11 @@ const PokemonApplication = () => {
   return (
     <>
       <div className="selector-container">
-        <select onChange={(e) => setSelectedPokemonId(e.target.value)}>
+        <select onChange={(e) => setSelectedPokemon(e.target.value)}>
           <option>Select a Pokemon</option>
           {pokemons.map((pokemon, i) => {
             return (
-              <option key={i} value={i + 1}>
+              <option key={i} value={pokemon.url}>
                 {pokemon.name}
               </option>
             );
