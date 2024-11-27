@@ -3,7 +3,7 @@ import Pokemon from "./Pokemon";
 
 const PokemonApplication = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [selcetedPokemon, setSelectedPokemon] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState("");
   const [pokemonDetails, setPokemonDetails] = useState(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const PokemonApplication = () => {
   }, []);
 
   const getDetails = async () => {
-    const response = await fetch(selcetedPokemon);
+    const response = await fetch(selectedPokemon);
     const json = await response.json();
     setPokemonDetails(json);
   };
